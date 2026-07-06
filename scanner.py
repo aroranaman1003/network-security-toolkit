@@ -18,12 +18,34 @@ def scan_port(host, port):
 
 def main():
     host, start_port, end_port = get_user_input()
+    COMMON_PORTS = {
+    20: "FTP Data",
+    21: "FTP",
+    22: "SSH",
+    23: "Telnet",
+    25: "SMTP",
+    53: "DNS",
+    67: "DHCP",
+    68: "DHCP",
+    80: "HTTP",
+    110: "POP3",
+    143: "IMAP",
+    443: "HTTPS",
+    3306: "MySQL",
+    3389: "RDP",
+}
      
     for port in range(start_port, end_port + 1):
         if scan_port(host, port):
-            print(f"Port {port} is OPEN")
+            if port in COMMON_PORTS:
+                print(f"Port {port} is OPEN ({COMMON_PORTS[port]})")
+            else:
+                print(f"Port {port} is OPEN")
         else:
-            print(f"Port {port} is CLOSED")
+            if port in COMMON_PORTS:
+                print(f"Port {port} is CLOSED ({COMMON_PORTS[port]})")
+            else:
+                print(f"Port {port} is CLOSED")
 
 if __name__ == "__main__":
     main()
