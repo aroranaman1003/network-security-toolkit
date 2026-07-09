@@ -10,3 +10,6 @@ def ping_host(host):
         command = ["ping", "-c", "4", host]
 
     subprocess.run(command)
+
+def test_loopback():
+    ping_host("127.0.0.1")

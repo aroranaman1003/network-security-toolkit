@@ -1,7 +1,8 @@
 from src.scanner import run_port_scanner
 from src.dns import dns_lookup
-from src.icmp import ping_host
+from src.icmp import ping_host,test_loopback
 from src.arp import show_arp_table
+
 
 
 def main():
@@ -13,7 +14,8 @@ def main():
         print("2. DNS Lookup")
         print("3. Ping Host (ICMP)")
         print("4. View ARP Table")
-        print("5. Exit")
+        print("5. Test Local Network (Loopback)")
+        print("6. Exit")
 
         choice = input("\nChoose an option: ")
 
@@ -43,7 +45,11 @@ def main():
             print("ARP Table:")
             show_arp_table()
 
-        elif choice == "5":
+        elif choice =="5":
+            print("Testing Local Network (Loopback)...")
+            test_loopback()
+
+        elif choice == "6":
             print("Exiting Toolkit...")
             break
 
