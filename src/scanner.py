@@ -28,9 +28,18 @@ def get_user_input():
 
 
 def scan_port(host, port):
+    """
+    Attempts to establish a TCP connection to the specified host and port.
 
-    scanner_socket = socket.socket()
-    scanner_socket.settimeout(3)
+    Returns:
+        True  -> Port is OPEN
+        False -> Port is CLOSED
+    """
+    scanner_socket = socket.socket(
+    socket.AF_INET,      # IPv4 socket
+    socket.SOCK_STREAM   # TCP socket
+    )
+    scanner_socket.settimeout(3)  # Wait at most 3 seconds
 
     try:
         result = scanner_socket.connect_ex((host, port))
